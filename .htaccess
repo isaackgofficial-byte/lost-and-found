@@ -1,0 +1,20 @@
+# Set default landing page
+DirectoryIndex landingpage.php
+
+# Enable URL rewriting (optional, useful for clean URLs)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Example: redirect /home to landingpage.php
+    # RewriteRule ^home$ landingpage.php [L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Handle PHP files
+AddType application/x-httpd-php .php
+
+# Security: deny access to sensitive files
+<FilesMatch "^(db_connect|Dockerfile|\.git|\.env)">
+    Require all denied
+</FilesMatch>
